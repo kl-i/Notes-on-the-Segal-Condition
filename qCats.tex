@@ -1,0 +1,259 @@
+\documentclass[./main.tex]{subfiles}
+\begin{document}
+
+\begin{prop}[Better Description of Homotopy Category
+  \footnote{
+    This is Land 1.2.9, 1.2.10, 1.2.11 combined.
+  }]
+   
+  Let $X \in \SSET$. 
+  Suppose $X$ lifts against inner 2-horns and inner 3-horns.
+  We can then define a category $\pi X$ as follows : 
+  \begin{itemize}
+    \item objects of $pi X$ are points of $X$.
+    \item
+    For $x , y : \De^0 \to X$,
+    the following two relations on $X(x,y)$ are the same : 
+    \begin{itemize}
+      \item $f \sim g$ when there exists 
+      a triangle in $X$ of the following form : 
+      \begin{cd}
+        \bullet & \bullet \\
+        & \bullet
+        \arrow[""{name=0, anchor=center, inner sep=0}, "g"{description}, from=1-1, to=2-2]
+        \arrow["f"{description}, from=1-1, to=1-2]
+        \arrow["id"{description}, from=1-2, to=2-2]
+        \arrow[shorten >=2pt, Rightarrow, from=1-2, to=0]
+      \end{cd}
+      \item $f \sim g$ when there exists
+      a triangle in $X$ of the following form : 
+      \begin{cd}
+        \bullet & \bullet \\
+        \bullet
+        \arrow["f"{description}, from=1-1, to=1-2]
+        \arrow[""{name=0, anchor=center, inner sep=0}, "g"{description}, from=2-1, to=1-2]
+        \arrow["id"{description}, from=1-1, to=2-1]
+        \arrow[shorten >=2pt, Rightarrow, from=1-1, to=0]  
+      \end{cd}
+    \end{itemize}
+    In fact, this defines an equivalence relation.
+    Define $\pi X(x, y)$ to be the quotient of $X(x,y)$ by it.
+    \item For $I^2 \to X$ representing two composable edges $f , g$,
+    define \emph{composites} of $f , g$ to be
+    extensions of $I^2 \to X$ to all of $\De^2$.
+    Then for any pair of composable edges in $X$,
+    a composite exists and is unique up to the equivalence,
+    hence defining a composition operation for $\pi X$. 
+  \end{itemize}
+  Then $h X \iso \pi X$.
+\end{prop}
+\begin{proof}
+  
+  \textit{(The two relations)}
+  \begin{cd}
+    &&&&& \bullet & \\
+    \bullet & \bullet & \Rightarrow & \bullet & \bullet && \Lambda^3_1 \\
+    \bullet &&& \bullet && \bullet &&\\
+    \bullet & \bullet & \Rightarrow && \bullet & \bullet & \Lambda^3_2 \\
+    & \bullet && \bullet &&
+    \arrow["f"{description}, from=2-1, to=2-2]
+    \arrow[""{name=0, anchor=center, inner sep=0}, "g"{description}, from=3-1, to=2-2]
+    \arrow["id"{description}, from=2-1, to=3-1]
+    \arrow["f"{description}, from=2-5, to=3-6]
+    \arrow["g"{description}, from=2-4, to=3-6]
+    \arrow["f"{description}, from=2-4, to=1-6]
+    \arrow["id"{description}, from=1-6, to=3-6]
+    \arrow["f"{description}, from=4-1, to=4-2]
+    \arrow[""{name=1, anchor=center, inner sep=0}, "g"{description}, from=4-1, to=5-2]
+    \arrow[from=4-2, to=5-2]
+    \arrow["id"{description}, from=2-4, to=2-5]
+    \arrow["f"{description}, from=2-5, to=1-6]
+    \arrow["f"{description}, from=3-4, to=4-6]
+    \arrow["f"{description}, from=5-4, to=4-5]
+    \arrow["f"{description}, from=3-4, to=4-5]
+    \arrow["id"{description}, from=5-4, to=3-4]
+    \arrow["g"{description}, from=5-4, to=4-6]
+    \arrow["id"{description}, from=4-5, to=4-6]
+    \arrow[shorten >=2pt, Rightarrow, from=2-1, to=0]
+    \arrow[shorten >=2pt, Rightarrow, from=4-2, to=1]
+  \end{cd}
+
+  \textit{(Equivalence Relation)}
+  Symmetry and transitivity are given respectively by : 
+  \begin{cd}
+    &&&&& \bullet \\
+    \bullet & \bullet & \Rightarrow & \bullet & \bullet && {\Lambda^3_1} \\
+    & \bullet && \bullet && \bullet \\
+    \bullet & \bullet & \Rightarrow && \bullet & \bullet & {\Lambda^3_2} \\
+    & \bullet && \bullet
+    \arrow[""{name=0, anchor=center, inner sep=0}, "g"{description}, from=2-1, to=3-2]
+    \arrow["f"{description}, from=2-1, to=2-2]
+    \arrow["id"{description}, from=2-2, to=3-2]
+    \arrow["f"{description}, from=2-4, to=2-5]
+    \arrow["id"{description}, from=2-5, to=1-6]
+    \arrow["g"{description}, from=2-4, to=3-6]
+    \arrow["id"{description}, from=2-5, to=3-6]
+    \arrow["id"{description}, from=3-6, to=1-6]
+    \arrow["f"{description}, from=2-4, to=1-6]
+    \arrow["g"{description}, from=4-1, to=4-2]
+    \arrow[""{name=1, anchor=center, inner sep=0}, "h"{description}, from=4-1, to=5-2]
+    \arrow["id"{description}, from=4-2, to=5-2]
+    \arrow["f"{description}, from=5-4, to=3-4]
+    \arrow["id"{description}, from=3-4, to=4-5]
+    \arrow["id"{description}, from=4-5, to=4-6]
+    \arrow["g"{description}, from=5-4, to=4-5]
+    \arrow["h"{description}, from=5-4, to=4-6]
+    \arrow["id"{description}, from=3-4, to=4-6]
+    \arrow[shorten >=2pt, Rightarrow, from=2-2, to=0]
+    \arrow[shorten >=2pt, Rightarrow, from=4-2, to=1]
+  \end{cd}
+
+  \textit{(Composites)}
+  Existence of composites in $X$ is precisely
+  the fact that $X$ lifts against the inner 2-horn.
+  For uniqueness of composites up to equivalence, use : 
+  \begin{cd}
+    && \bullet \\
+    \bullet & \bullet && {\Lambda^3_1} \\
+    && \bullet
+    \arrow["f"{description}, from=2-1, to=2-2]
+    \arrow["g"{description}, from=2-2, to=1-3]
+    \arrow["g"{description}, from=2-2, to=3-3]
+    \arrow["id"{description}, from=1-3, to=3-3]
+    \arrow["{h'}"{description}, from=2-1, to=3-3]
+    \arrow["h"{description}, from=2-1, to=1-3]
+  \end{cd}
+
+  \textit{(Associativity of Composition)}
+  Let $f , g , h$ be a triple of composable edges in $X$.
+  Then we have 
+  \begin{cd}
+    && \bullet \\
+    \bullet & \bullet && {\Lambda^3_1} \\
+    && \bullet
+    \arrow["f"{description}, from=2-1, to=2-2]
+    \arrow["g"{description}, from=2-2, to=1-3]
+    \arrow["hg"{description}, from=2-2, to=3-3]
+    \arrow["h"{description}, from=1-3, to=3-3]
+    \arrow["{(hg)f}"{description}, from=2-1, to=3-3]
+    \arrow["{g f}"{description}, from=2-1, to=1-3]
+  \end{cd}
+  where $gf$ is a composite of $f , g$ and $h g$ is
+  a composite of $g , h$,
+  and $(hg) f$ is a composite of $hg$ with $f$. 
+  Filling the above inner horn shows that
+  $(hg) f$ is in fact also a composite for $h$ with $g f$.
+  By uniqueness of composites up to equivalence,
+  this proves associativity of composition.
+
+  $(h X \iso \pi X)$
+  From the universal property of $h : X \to N(h X)$,
+  we have a commuting triangle of simplicial sets : 
+  \begin{cd}
+    X & \\
+    N(h X) & N(\pi X)
+    \arrow[from=1-1, to=2-1, "{h}"']
+    \arrow[from=2-1, to=2-2]
+    \arrow[from=1-1, to=2-2]
+  \end{cd}
+  By fully faithfulness of $N$,
+  we need to show the horizontal morphism is an isomorphism.
+  It is bijective at the level of objects.
+  So we look at the level of morphisms.
+  Let $x, y$ be points of $X$.
+  Then 
+  \begin{cd}
+    \SSET(\De^1 , X) & \\
+    {hX(x,y)} & {\pi X(x ,y)}
+    \arrow[from=1-1, to=2-1, "{h}"']
+    \arrow[from=2-1, to=2-2]
+    \arrow[from=1-1, to=2-2]
+  \end{cd}
+  The diagonal map is surjective by definition,
+  hence so is the bottom map.
+  The vertical map is also surjective : 
+  1-step simplifications are obtained by composites of pairs of morphisms.
+  So to show injectivity of the bottom map,
+  we can take two $f , g \in h X(x , y)$,
+  lift them to edges in $X$ then quotient to $\pi X (x, y)$.
+  If they are equal in $\pi X( x , y)$,
+  then there is a triangle in $X$ witnessing their equivalence.
+  The spine of this triangle simplifies both to $f$ and $g$ as
+  edges in $X$,
+  and thus $f = g \in h X(x,y)$ as desired.
+\end{proof}
+
+\begin{intuit}
+
+  Let $X \in \SSET$ and $(f , g) : \La^2_1 \to X$ a pair of
+  composable edges.
+  Then the ``space'' of composites of $f$ with $g$ can be
+  defined by the following cartesian square : 
+  \begin{cd}
+    {\mathrm{Comp}(f,g)} & {X^{\Delta^2}} \\
+    {\Delta^0} & {X^{\Lambda^2_1}}
+    \arrow["{(f,g)}"', from=2-1, to=2-2]
+    \arrow[from=1-1, to=2-1]
+    \arrow[from=1-1, to=1-2]
+    \arrow[from=1-2, to=2-2]
+    \arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+  \end{cd}  
+  In the above proposition, we saw that being able to lift against 
+  inner 3-horns implies that $\pi_0^\De \mathrm{Comp}(f,g)$ is singleton.
+  The incarnation of infinity categories as \emph{quasi-categories}
+  will say that the family $X^{\De^2} \to X^{\La^2_1}$ 
+  is ``homotopically trivial''.
+  In particular,
+  we will much later show that 
+  $\mathrm{Comp}(f,g)$ is a contractible Kan complex.  
+\end{intuit}
+
+\begin{prop}[Equivalent Definitions of Infinity Categories (Preview)
+  \footnote{
+    Land - 1.3.34
+  }]
+  Let $X$ be a simplicial set.
+  Define the following classes of morphisms of simplicial sets : 
+  \begin{itemize}
+    \item inner horns $\IH = \set{\La^n_k \to \De^n \st n \geq 2 ,
+    0 < k < n}$.
+    \item cell inclusions $\CELL = \set{\partial\De^n \to \De^n \st n \geq 0}$
+  \end{itemize}
+  Then the following are equivalent : 
+  \begin{itemize}
+    \item $X$ lifts against $\IH$
+    \item (Homotopy Unique Composition) 
+    $X^{\De^2} \to X^{\La^2_1}$ lifts against $\CELL$.
+    \item (Homotopical Segal Condition)
+    For $n \geq 2$,
+    $X^{\De^n} \to X^{I^n}$ lifts against $\CELL$. 
+  \end{itemize}
+  Call $X$ an \emph{infinity category} when
+  it satisfies any (and thus all) of the above.
+\end{prop}
+
+\begin{eg}
+  \begin{itemize}
+    \item Infinity groupoids $S(X)$ of topological spaces $X$, 
+    i.e. nerves of topological spaces along 
+    the standard realisation of simplicies $\bbDe \to \TOP$.
+    \item Nerves of 1-categories.
+    \item Later we will be able to turn categories
+    enriched over $\Z$-complexes into infinity categories
+    via a procedure called the \emph{dg-nerve}.
+    
+    This will give examples from homological algebra and algebraic geometry : 
+    the dg-nerve $N_{dg} (\mathrm{Ch} A)$ of (unbounded) complexes
+    in a (Grothendieck) abelian category.
+    \item In order to take ``higher'' (co)limits of infinity categories,
+    we will have to make an infinity category $\CAT_{\infty}$ 
+    of (small) infinity categories.
+    More important yet : 
+    we will want to make ``families of infinity categories over 
+    a base infinity category $B$'' which vary contravariantly along $B$.
+    These should correspond to functors $F : B\op \to \CAT_\infty$.
+    This is the subject of Lurie's straightening-unstraightening theorem.
+
+  \end{itemize}
+\end{eg}
+\end{document}
